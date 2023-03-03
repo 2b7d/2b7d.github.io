@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cursor-height: 20px;
+
+    --color-black: #1c1c1c;
+    --color-red: #a36666;
+    --color-green: #90a57d;
+    --color-yellow: #d7af87;
+    --color-blue: #7fa5bd;
+    --color-purple: #c79ec4;
+    --color-cyan: #8adbb4;
+    --color-white: #d0d0d0;
+}
+
+@font-face {
+    font-family: "CodeNewRoman";
+    src: url("./code-new-roman.woff2") format("woff2");
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+body {
+    font-family: CodeNewRoman, sans-serif;
+    background: var(--color-black);
+    color: var(--color-white);
+
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: var(--cursor-height);
+}
+
+.cursor {
+    width: 8px;
+    height: var(--cursor-height);
+    background: var(--color-white);
+}
+
+.cursor--blink {
+    animation: blink 1s steps(5, start) infinite;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.ps1 {
+    color: var(--color-purple);
+    margin-right: .5rem;
+}
+
+.ps1__username {
+    color: var(--color-yellow);
+}
+
+.ps1__dir {
+    color: var(--color-blue);
+}
+
+/* DEBUG */
+.debug { outline: solid red; }
