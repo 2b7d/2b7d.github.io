@@ -1,35 +1,14 @@
-const cmd1 = {
-    htmlElem: document.createElement("p"),
-    text: "me --help",
-    index: 0
-};
+const cmd1 = { text: "me --help", index: 0 };
+const cmd2 = { text: "cat my-interests.txt", index: 0 };
 
-const cmd2 = {
-    htmlElem: document.createElement("p"),
-    text: "cat my-interests.txt",
-    index: 0
-};
+const lines = document.querySelectorAll(".terminal-line");
+const sections = document.querySelectorAll("section");
+const cursor = document.querySelector(".cursor");
 
-function createPS1() {
-    const ps1 = document.createElement("p");
-    ps1.classList.add("ps1");
-
-    const username = document.createElement("span");
-    username.classList.add("ps1__username");
-    username.textContent = "[fosseddy]";
-
-    const dir = document.createElement("span");
-    dir.classList.add("ps1__dir");
-    dir.textContent = "[~]";
-
-    ps1.append(username, dir, "$");
-    return ps1;
-}
-
-function printCmd(cmd) {
+function printCmd(cmd, htmlElem) {
     return new Promise((resolve, _) => {
         const id = setInterval(() => {
-            cmd.htmlElem.textContent += cmd.text[cmd.index];
+            htmlElem.textContent += cmd.text[cmd.index];
             cmd.index += 1;
             if (cmd.index === cmd.text.length) {
                 clearInterval(id);
@@ -46,25 +25,24 @@ function sleep(time) {
 }
 
 async function main() {
-    const cursor = document.createElement("div");
-    cursor.classList.add("cursor");
+    await sleep(500);
+    await printCmd(cmd1, lines[0].querySelector("#cmd-text"));
+    await sleep(500);
+    sections[0].classList.remove("hidden");
 
-    document.querySelector("#cmd-1")
-            .append(createPS1(), cmd1.htmlElem, cursor);
+    lines[1].classList.remove("hidden")
+    lines[1].append(cursor);
     await sleep(500);
-    await printCmd(cmd1);
+    await printCmd(cmd2, lines[1].querySelector("#cmd-text"));
     await sleep(500);
-    document.querySelector("#about-me").classList.remove("hidden");
+    sections[1].classList.remove("hidden");
 
-    document.querySelector("#cmd-2")
-            .append(createPS1(), cmd2.htmlElem, cursor);
-    await sleep(500);
-    await printCmd(cmd2);
-    await sleep(500);
-    document.querySelector("#my-interests").classList.remove("hidden");
-
-    document.querySelector("#cursor-placeholder").append(createPS1(), cursor);
+    lines[2].classList.remove("hidden");
+    lines[2].append(cursor);
     cursor.classList.add("cursor--blink");
 }
 
-main().catch(console.error);
+window.addEventListener("load", () => {
+    document.body.classList.remove("hidden");
+    main().catch(console.error);
+});

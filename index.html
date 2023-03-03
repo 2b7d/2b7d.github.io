@@ -6,10 +6,18 @@
     <link rel="stylesheet" href="./style.css" />
     <title>fosseddy</title>
 </head>
-<body class="debug">
-    <div id="cmd-1" class="row"></div>
+<body class="debug hidden">
+    <div class="terminal-line">
+        <p class="ps1">
+            <span class="ps1__username">[fosseddy]</span>
+            <span class="ps1__cwd">[~]</span>
+            <span class="ps1__sign">$</span>
+            <span id="cmd-text"></span>
+        </p>
+        <div class="cursor"></div>
+    </div>
 
-    <section id="about-me" class="hidden">
+    <section class="hidden">
         <ul>
             <li>
                 <a href="https://github.com/fosseddy" target="_blank">
@@ -29,30 +37,43 @@
         </ul>
 
         <p>
-        Я профессионально занимаюсь web-разработкой. Больше склонен к
-        технической части, нежели к визуальной. Люблю принимать участие
-        в разработке различных сервисов, панелей администраторов,
-        личных кабинетов и т.п.
+            Я профессионально занимаюсь web-разработкой. Больше склонен к
+            технической части, нежели к визуальной. Люблю принимать участие
+            в разработке различных сервисов, панелей администраторов,
+            личных кабинетов и т.п.
         </p>
         <p>
-        В личное время увлекаюсь low-level программированием:
-        виртуальные машины, компиляторы, операционные системы. Познаю,
-        как работает компьютер "под капотом".
+            В личное время увлекаюсь low-level программированием:
+            виртуальные машины, компиляторы, операционные системы. Познаю,
+            как работает компьютер "под капотом".
         </p>
     </section>
 
-    <div id="cmd-2" class="row"></div>
+    <div class="terminal-line hidden">
+        <p class="ps1">
+            <span class="ps1__username">[fosseddy]</span>
+            <span class="ps1__cwd">[~]</span>
+            <span class="ps1__sign">$</span>
+            <span id="cmd-text"></span>
+        </p>
+    </div>
 
-    <section id="my-interests" class="hidden">
+    <section class="hidden">
         <ul>
             <li>Компьютеры</li>
+            <li>Web-разработка</li>
             <li>Linux</li>
             <li>Low-level программирование</li>
-            <li>Web-разработка</li>
         </ul>
     </section>
 
-    <div id="cursor-placeholder" class="row"></div>
+    <div class="terminal-line hidden">
+        <p class="ps1">
+            <span class="ps1__username">[fosseddy]</span>
+            <span class="ps1__cwd">[~]</span>
+            <span class="ps1__sign">$</span>
+        </p>
+    </div>
 
     <script src="./main.js"></script>
 </body>
