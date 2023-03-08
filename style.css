@@ -3,8 +3,6 @@
 }
 
 :root {
-    --cursor-height: 20px;
-
     --color-black: #1c1c1c;
     --color-yellow: #d7af87;
     --color-blue: #7fa5bd;
@@ -36,16 +34,14 @@ body {
     font-family: CodeNewRoman, sans-serif;
     background: var(--color-black);
     color: var(--color-white);
-    max-width: 800px;
+    max-width: 50rem;
     margin: 0 auto;
     padding: 1rem;
 }
 
 .terminal-line {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    height: var(--cursor-height);
 }
 
 .terminal-line p {
@@ -53,12 +49,12 @@ body {
 }
 
 .cursor {
-    width: 8px;
-    height: var(--cursor-height);
+    width: .5rem;
+    height: 1.25rem;
     background: var(--color-white);
 }
 
-.cursor--blink {
+.blinking {
     animation: blink 1s steps(5, start) infinite;
 }
 
@@ -66,17 +62,17 @@ body {
     visibility: hidden;
 }
 
-.ps1__sign {
-    color: var(--color-purple);
-    margin-right: .5rem;
-}
-
-.ps1__username {
+.username {
     color: var(--color-yellow);
 }
 
-.ps1__cwd {
+.cwd {
     color: var(--color-blue);
+}
+
+.sign {
+    color: var(--color-purple);
+    margin-right: .5rem;
 }
 
 /* DEBUG */
