@@ -1,5 +1,5 @@
 const cmd1 = { text: "me --help", index: 0 };
-const cmd2 = { text: "cat my-interests.txt", index: 0 };
+const cmd2 = { text: "cat my-interests", index: 0 };
 
 const lines = document.querySelectorAll(".terminal-line");
 const cmdData = document.querySelectorAll(".cmd-data");
