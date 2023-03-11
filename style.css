@@ -39,6 +39,10 @@ body {
     padding: 1rem;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .terminal-line {
     display: flex;
     align-items: center;
@@ -46,6 +50,7 @@ body {
 
 .terminal-line p {
     margin: 0;
+    display: flex;
 }
 
 .cursor {
@@ -56,10 +61,6 @@ body {
 
 .blinking {
     animation: blink 1s steps(5, start) infinite;
-}
-
-.hidden {
-    visibility: hidden;
 }
 
 .username {
@@ -75,7 +76,8 @@ body {
     margin-right: .5rem;
 }
 
-/* DEBUG */
-.debug {
-    outline: solid red;
+.cmd {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
 }

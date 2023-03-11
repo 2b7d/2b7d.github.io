@@ -1,48 +1,44 @@
-const cmd1 = { text: "me --help", index: 0 };
-const cmd2 = { text: "cat my-interests", index: 0 };
-
-const lines = document.querySelectorAll(".terminal-line");
-const cmdData = document.querySelectorAll(".cmd-data");
 const cursor = document.querySelector(".cursor");
+const lines = document.querySelectorAll(".terminal-line");
+const cmds = document.querySelectorAll(".cmd");
+const cmdData = document.querySelectorAll(".cmd-data");
+const animations = [];
 
-function printCmd(cmd, htmlElem) {
-    return new Promise((resolve, _) => {
-        const id = setInterval(() => {
-            htmlElem.textContent += cmd.text[cmd.index];
-            cmd.index += 1;
-            if (cmd.index === cmd.text.length) {
-                clearInterval(id);
-                resolve();
-            }
-        }, 80);
+for (const c of cmds) {
+    const textlen = c.textContent.length;
+    const duration = textlen * 60;
+    const steps = Math.floor(textlen + textlen * 0.3);
+
+    animations.push({
+        keyframes: [{ width: textlen + "ch" }],
+        opts: {
+            duration,
+            fill: "forwards",
+            easing: `steps(${steps}, jump-none)`
+        }
     });
 }
 
 function sleep(time) {
-    return new Promise((resolve, _) => {
-        setTimeout(resolve, time);
-    });
+    return new Promise(resolve => setTimeout(resolve, time));
 }
 
-async function main() {
+window.addEventListener("load", async () => {
+    document.body.classList.remove("hidden");
+
     await sleep(500);
-    await printCmd(cmd1, lines[0].querySelector(".cmd"));
-    await sleep(500);
+    cmds[0].animate(animations[0].keyframes, animations[0].opts);
+    await sleep(animations[0].opts.duration + 500)
     cmdData[0].classList.remove("hidden");
 
     lines[1].classList.remove("hidden")
     lines[1].append(cursor);
     await sleep(500);
-    await printCmd(cmd2, lines[1].querySelector(".cmd"));
-    await sleep(500);
+    cmds[1].animate(animations[1].keyframes, animations[1].opts);
+    await sleep(animations[1].opts.duration + 500)
     cmdData[1].classList.remove("hidden");
 
     lines[2].classList.remove("hidden");
     lines[2].append(cursor);
     cursor.classList.add("blinking");
-}
-
-window.addEventListener("load", () => {
-    document.body.classList.remove("hidden");
-    main().catch(console.error);
 });
