@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/main.js"></script>
     <title>fosseddy</title>
 </head>
 <body class="hidden">
-    <div class="terminal-line">
-        <p><span class="username">[fosseddy]</span><span class="cwd">[~]</span><span class="sign">$</span><span class="cmd">me --help</span></p>
+    <div class="command-line">
+        <p class="ps1"><span class="ps1-user">fosseddy</span><span class="ps1-cwd">~</span><span class="ps1-sign">$</span></p>
+        <p class="command">me --help</p>
         <div class="cursor"></div>
     </div>
 
-    <div class="cmd-data hidden">
+    <div class="command-result hidden">
         <ul>
             <li><a href="https://github.com/fosseddy" target="_blank">GitHub</a></li>
             <li><a href="https://t.me/fosseddy" target="_blank">Telegram</a></li>
@@ -23,11 +25,12 @@
         <p>В личное время познаю, как работает компьютер. Увлекаюсь low-level программированием: виртуальные машины, компиляторы, операционные системы.</p>
     </div>
 
-    <div class="terminal-line hidden">
-        <p><span class="username">[fosseddy]</span><span class="cwd">[~]</span><span class="sign">$</span><span class="cmd">cat interests</span></p>
+    <div class="command-line hidden">
+        <p class="ps1"><span class="ps1-user">fosseddy</span><span class="ps1-cwd">~</span><span class="ps1-sign">$</span></p>
+        <p class="command">cat interests</p>
     </div>
 
-    <div class="cmd-data hidden">
+    <div class="command-result hidden">
         <ul>
             <li>Компьютеры</li>
             <li>Web-разработка</li>
@@ -36,10 +39,8 @@
         </ul>
     </div>
 
-    <div class="terminal-line hidden">
-        <p><span class="username">[fosseddy]</span><span class="cwd">[~]</span><span class="sign">$</span></p>
+    <div class="command-line hidden">
+        <p class="ps1"><span class="ps1-user">fosseddy</span><span class="ps1-cwd">~</span><span class="ps1-sign">$</span></p>
     </div>
-
-    <script src="/main.js"></script>
 </body>
 </html>

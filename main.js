@@ -1,20 +1,18 @@
 const cursor = document.querySelector(".cursor");
-const lines = document.querySelectorAll(".terminal-line");
-const cmds = document.querySelectorAll(".cmd");
-const cmdData = document.querySelectorAll(".cmd-data");
+const lines = document.querySelectorAll(".command-line");
+const commands = document.querySelectorAll(".command");
+const results = document.querySelectorAll(".command-result");
 const animations = [];
 
-for (const c of cmds) {
-    const textlen = c.textContent.length;
-    const duration = textlen * 60;
-    const steps = Math.floor(textlen + textlen * 0.3);
+for (const cmd of commands) {
+    const textlen = cmd.textContent.length;
 
     animations.push({
-        keyframes: [{ width: textlen + "ch" }],
+        keyframes: [{width: textlen + "ch"}],
         opts: {
-            duration,
+            duration: textlen * 35,
             fill: "forwards",
-            easing: `steps(${steps}, jump-none)`
+            easing: `steps(${textlen})`
         }
     });
 }
@@ -23,22 +21,31 @@ function sleep(time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
 
+function animate(element, animation) {
+    return new Promise(resolve => {
+        element
+            .animate(animation.keyframes, animation.opts)
+            .addEventListener("finish", resolve);
+    });
+}
+
 window.addEventListener("load", async () => {
     document.body.classList.remove("hidden");
 
     await sleep(500);
-    cmds[0].animate(animations[0].keyframes, animations[0].opts);
-    await sleep(animations[0].opts.duration + 500)
-    cmdData[0].classList.remove("hidden");
-
-    lines[1].classList.remove("hidden")
-    lines[1].append(cursor);
+    await animate(commands[0], animations[0]);
     await sleep(500);
-    cmds[1].animate(animations[1].keyframes, animations[1].opts);
-    await sleep(animations[1].opts.duration + 500)
-    cmdData[1].classList.remove("hidden");
+    results[0].classList.remove("hidden");
 
-    lines[2].classList.remove("hidden");
+    lines[1].append(cursor);
+    lines[1].classList.remove("hidden")
+
+    await sleep(500);
+    await animate(commands[1], animations[1]);
+    await sleep(500);
+    results[1].classList.remove("hidden");
+
     lines[2].append(cursor);
+    lines[2].classList.remove("hidden");
     cursor.classList.add("blinking");
 });
