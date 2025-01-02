@@ -3,11 +3,11 @@
 }
 
 :root {
-    --color-black: #1c1c1c;
-    --color-yellow: #d7af87;
-    --color-blue: #7fa5bd;
-    --color-purple: #c79ec4;
-    --color-white: #d0d0d0;
+    --color-black: #1a1a1a;
+    --color-yellow: #d9b38c;
+    --color-blue: #7a9eb8;
+    --color-magenta: #c69fc3;
+    --color-white: #cccccc;
 }
 
 @font-face {
@@ -56,7 +56,7 @@ body {
 }
 
 .ps1-sign {
-    color: var(--color-purple);
+    color: var(--color-magenta);
 }
 
 .command {
