@@ -8,6 +8,7 @@
     --color-blue: #7a9eb8;
     --color-magenta: #c69fc3;
     --color-white: #cccccc;
+    --color-red: #9f6060;
 }
 
 @font-face {
@@ -69,7 +70,7 @@ body {
 
 .cursor {
     width: 1ch;
-    background: var(--color-white);
+    background: var(--color-red);
 }
 
 .blinking {
